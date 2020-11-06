@@ -1,11 +1,7 @@
-{-# language AllowAmbiguousTypes #-}
-{-# language DataKinds, GADTs, KindSignatures #-}
-{-# language FlexibleInstances, UndecidableInstances #-}
-{-# language FunctionalDependencies, MultiParamTypeClasses #-}
-{-# language OverloadedStrings #-}
+{-# language DataKinds #-}
 {-# language OverloadedLabels #-}
-{-# language ScopedTypeVariables, TypeApplications #-}
-{-# language StandaloneDeriving #-}
+{-# language OverloadedStrings #-}
+{-# language TypeApplications #-}
 module Main where
 
 import Control.Exception (bracket)
