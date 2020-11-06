@@ -31,10 +31,13 @@ main =
       (Values [Record.extend @"col1" True $ Record.extend @"col2" "no" $ Record.extend @"col3" Nothing Record.empty])
 -}
 
+    -- INSERT INTO mytable(col1, col2, col3) VALUES (f, 'yes', 99)
     insert conn schema
       (Into #mytable)
       (Some $ FCons #col1 $ FCons #col2 $ FCons #col3 FNil)
       (Values [Record.extend @"col1" False $ Record.extend @"col2" "yes" $ Record.extend @"col3" 99 Record.empty])
+
+    -- INSERT INTO mytable(col1, col2) VALUES (t, 'maybe')
     insert conn schema
       (Into #mytable)
       (Some $ FCons #col1 $ FCons #col2 FNil)
@@ -49,10 +52,20 @@ main =
       (Values [ [r| col1 = False, col2 = "hello", col3 = Just 99 |] ])
     -}
 
+    -- SELECT * FROM mytable
     print =<< select conn schema Star (From #mytable)
+
+    -- SELECT * FROM mytable WHERE col3 = 99
     print =<< selectW conn schema Star (From #mytable) (Where $ #col3 :== Val 99)
   where
     schema =
+      {-
+      CREATE TABLE mytable (
+        col1 BOOLEAN,
+        col2 TEXT,
+        col2 INTEGER DEFAULT 2,
+      )
+      -}
       Table #mytable
         (Column #col1 TBool CNone $
          Column #col2 TString CNone $
