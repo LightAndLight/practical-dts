@@ -12,6 +12,7 @@ module Data.Record
   , empty
   , get
   , set
+  , field
   , extend
   , retract
   , SFields(..)
@@ -70,6 +71,13 @@ get (Record v) =
 
 set :: forall field fields a. Has field fields a => a -> Record fields -> Record fields
 set val (Record v) = Record $ v Vector.// [(offset @field @fields @a, unsafeCoerce val :: Any)]
+
+-- | `Has field fields a => Lens (Record fields) a`
+field ::
+  forall field fields a.
+  Has field fields a =>
+  forall f. Functor f => (a -> f a) -> Record fields -> f (Record fields)
+field f r = (\a' -> set @field a' r) <$> f (get @field r)
 
 extend :: forall field fields a. a -> Record fields -> Record ('(field, a) ': fields)
 extend val (Record v) = Record $ Vector.cons (unsafeCoerce val :: Any) v
