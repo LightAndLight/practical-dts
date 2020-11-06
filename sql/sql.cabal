@@ -9,7 +9,14 @@ build-type:          Simple
 extra-source-files:  CHANGELOG.md
 
 library
-  exposed-modules:     Db
+  exposed-modules:     Sql.Expr
+                     , Sql.Parser
+                     , Sql.Query
+                     , Sql.Schema
+                     , Sql.Schema.Column
+                     , Sql.Schema.Column.Type
+                     , Sql.Schema.Constraint
+                     , Sql.Schema.Table
   build-depends:       base >=4.12 && <4.13
                      , pdts-record
                      , pdts-string
@@ -18,5 +25,35 @@ library
                      , bytestring
                      , postgresql-libpq
                      , text
+  hs-source-dirs:      src
   default-language:    Haskell2010
+  default-extensions:  AllowAmbiguousTypes
+                     , ConstraintKinds
+                     , DataKinds
+                     , FlexibleInstances
+                     , FunctionalDependencies
+                     , GADTs
+                     , KindSignatures
+                     , MultiParamTypeClasses
+                     , OverloadedStrings
+                     , ScopedTypeVariables
+                     , StandaloneDeriving
+                     , TypeApplications
+                     , TypeFamilies
+                     , TypeOperators
+                     , UndecidableInstances
+  ghc-options:         -Wall -Werror
+
+executable testing
+  build-depends:       base >=4.12 && <4.13
+                     , sql
+                     , attoparsec
+                     , bytestring >= 0.10
+                     , pdts-record
+                     , pdts-string
+                     , postgresql-libpq
+                     , text
+  hs-source-dirs:      demo
+  default-language:    Haskell2010
+  main-is:             Db.hs
   ghc-options:         -Wall -Werror
