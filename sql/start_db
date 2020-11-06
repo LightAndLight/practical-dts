@@ -1,0 +1,10 @@
+#! /usr/bin/env bash
+
+pgdir=$PWD/tmp/pgdata
+rm -rf tmp
+mkdir -p $pgdir tmp/sock
+pg_ctl -D $pgdir -l pg.log initdb
+
+pg_ctl -D $pgdir -l pg.log -o "-k $PWD/tmp/sock" -w start
+
+createdb -h localhost testing

@@ -1,0 +1,13 @@
+packages:
+  ./pdts-fin
+  ./pdts-hlist
+  ./pdts-hvector
+  ./pdts-list
+  ./pdts-nat
+  ./pdts-record
+  ./pdts-sigma
+  ./pdts-string
+  ./pdts-type
+  ./pdts-vector
+  ./sql
+  ./demo

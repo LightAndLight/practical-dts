@@ -1,0 +1,22 @@
+cabal-version:       >=1.10
+
+name:                demo
+version:             0.1.0.0
+license-file:        LICENSE
+author:              Isaac Elliott
+maintainer:          isaace71295@gmail.com
+build-type:          Simple
+extra-source-files:  CHANGELOG.md
+
+executable demo
+  main-is:             Main.hs
+  build-depends:       base >=4.12 && <4.13
+                     , pdts-hlist
+                     , pdts-hvector
+                     , pdts-list
+                     , pdts-nat
+                     , pdts-sigma
+                     , pdts-type
+                     , pdts-vector
+  default-language:    Haskell2010
+  ghc-options:         -Wall -Werror

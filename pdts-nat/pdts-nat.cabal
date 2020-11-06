@@ -1,0 +1,20 @@
+cabal-version:       2.4
+
+name:                pdts-nat
+version:             0.1.0.0
+license:             BSD-3-Clause
+license-file:        LICENSE
+author:              Isaac Elliott
+maintainer:          isaace71295@gmail.com
+category:            Data
+extra-source-files:  CHANGELOG.md
+
+library
+  exposed-modules:     Data.Nat
+                     , Data.Singletons.Nat.Lazy
+                     , Data.Singletons.Nat.Strict
+                     , Data.Singletons.Nat.Strict.Internal
+  build-depends:       base ^>=4.12.0.0
+                     , pdts-sigma
+  hs-source-dirs:      src
+  default-language:    Haskell2010

@@ -1,0 +1,16 @@
+cabal-version:       2.4
+
+name:                pdts-type
+version:             0.1.0.0
+license:             BSD-3-Clause
+license-file:        LICENSE
+author:              Isaac Elliott
+maintainer:          isaace71295@gmail.com
+category:            Data
+extra-source-files:  CHANGELOG.md
+
+library
+  exposed-modules:     Data.Singletons.Types
+  build-depends:       base ^>=4.12.0.0
+  hs-source-dirs:      src
+  default-language:    Haskell2010
